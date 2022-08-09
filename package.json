@@ -1,0 +1,13 @@
+{
+  "name": "icon-slayer",
+  "version": "1.0.0",
+  "description": "TBD",
+  "main": "index.js",
+  "author": "danielke-canva",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "eslint": "^8.21.0",
+    "eslint-config-xo": "^0.41.0"
+  }
+}
