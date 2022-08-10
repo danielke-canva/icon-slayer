@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "TBD",
   "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
   "author": "danielke-canva",
   "license": "MIT",
   "private": false,
