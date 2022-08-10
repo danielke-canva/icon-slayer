@@ -11,6 +11,7 @@
   "private": false,
   "devDependencies": {
     "eslint": "^8.21.0",
-    "eslint-config-xo": "^0.41.0"
+    "eslint-config-xo": "^0.41.0",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.6.0"
   }
 }

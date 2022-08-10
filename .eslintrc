@@ -8,5 +8,14 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "rules": {}
+  "plugins": [
+    "sort-imports-es6-autofix"
+  ],
+  "rules": {
+	"sort-imports-es6-autofix/sort-imports-es6": [1, {
+		"ignoreCase": false,
+		"ignoreMemberSort": false,
+		"memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+	  }]
+  }
 }

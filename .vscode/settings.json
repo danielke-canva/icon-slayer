@@ -4,5 +4,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.validate": ["javascript"]
+  "eslint.validate": [
+    "javascript"
+  ],
+  "editor.insertSpaces": false,
+  "editor.guides.indentation": true,
+  "editor.detectIndentation": false
 }
