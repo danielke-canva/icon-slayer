@@ -9,5 +9,6 @@
   ],
   "editor.insertSpaces": false,
   "editor.guides.indentation": true,
-  "editor.detectIndentation": false
+  "editor.detectIndentation": false,
+  "eslint.packageManager": "yarn"
 }
