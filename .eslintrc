@@ -17,5 +17,6 @@
 		"ignoreMemberSort": false,
 		"memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
 	  }]
-  }
+  },
+  "ignorePatterns": ["svgo-config.js"]
 }

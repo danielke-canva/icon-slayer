@@ -1,2 +1,8 @@
+.DS_store
+
 node_modules
 yarn.lock
+
+input
+output
+svgo-config.js
