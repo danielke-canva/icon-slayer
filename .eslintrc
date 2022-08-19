@@ -18,5 +18,5 @@
 		"memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
 	  }]
   },
-  "ignorePatterns": ["svgo-config.js"]
+  "ignorePatterns": ["svgo-config.js", "*.tmpl.js"]
 }

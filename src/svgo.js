@@ -1,16 +1,14 @@
-import {__dirname} from './utils.js';
-import {basename, extname, join, resolve} from 'node:path';
+import {CANVA_REPO} from './constants.js';
+import {basename, extname, join} from 'node:path';
 import {format, inspect} from 'node:util';
+import {getAbsolutePath} from './utils.js';
 import {readFile, readdir, writeFile} from 'node:fs/promises';
 import {spawnSync} from 'node:child_process';
 import yaml from 'js-yaml';
 
-const CANVA_REPO = '/Users/danielke/work/canva';
 const CONFIG_FILE = 'svgo-config';
 // Const SVGO_SH = join(CANVA_REPO, 'image/src/main/resources/svgo.sh');
 const CANVA_SVGO_CONFIG = join(CANVA_REPO, `image/src/main/resources/${CONFIG_FILE}.yaml`);
-
-const getAbsolutePath = (file, dir = '.') => resolve(__dirname()[0], '..', dir, file);
 
 const svgo = async ({input, output, logger}) => {
 	// Load svgo config from canva/Canva, write it to project directory
