@@ -13,6 +13,9 @@ const relocate = async ({src, logger}) => {
 	const srcPath = getAbsolutePath(src);
 	const files = await readdir(srcPath);
 
+	const relocatedFiles = [];
+	const iconCompNames = [];
+
 	try {
 		for (const file of files) {
 			const result = file.match(/^icon-(?<iconName>.*)\.inline\.svg/i);
@@ -23,26 +26,34 @@ const relocate = async ({src, logger}) => {
 
 			const iconFolder = iconName.split('-').join('_');
 			const iconPath = join(CANVA_ICONS, iconFolder);
+			const srcFile = join(srcPath, file);
+			const targetFile = join(iconPath, file);
 
 			await mkdir(iconPath, {recursive: true});
-			await copyFile(join(srcPath, file), join(iconPath, file));
+			await copyFile(srcFile, targetFile);
 			logger.succeed(`Copied to ${join(iconFolder, file)}`);
+			relocatedFiles.push(targetFile);
 
 			const iconEntryTmpl = (await readFile(ICON_TS_TMPL, 'utf8')).replace(/__placeholder__/ig, '%s');
+			const svgCompName = `${camelCase(iconName)}Svg`;
+			const iconCompName = `${camelCase(iconName, {pascalCase: true})}Icon`;
 			const iconEntry = format(
 				iconEntryTmpl,
-				`${camelCase(iconName)}Svg`, // Svg component
-				file, // Svg file
-				`${camelCase(iconName, {pascalCase: true})}Icon`, // Icon component
-				`${camelCase(iconName)}Svg`, // Svg component
+				svgCompName, // Svg component name
+				file, // Svg filename
+				iconCompName, // Icon component name
+				svgCompName, // Svg component name
 			);
 
 			await writeFile(join(iconPath, 'icon.ts'), iconEntry);
 			logger.succeed(`Generated ${join(iconFolder, 'icon.ts')}\n`);
+			iconCompNames.push(iconCompName);
 		}
 	} catch (err) {
 		logger.fail(String(err));
 	}
+
+	return [iconCompNames, relocatedFiles];
 };
 
 export default relocate;

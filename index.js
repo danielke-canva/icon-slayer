@@ -16,11 +16,11 @@ try {
 
 	// Step 2: create new icon files
 	logger.start('Moving inline svg files to canva repo');
-	await relocate({
+	const [components] = await relocate({
 		src: './output',
 		logger,
 	});
-	logger.succeed('Done with moving!');
+	logger.succeed(`Done with moving! ${components.length} components are generated.`);
 } catch (err) {
 	logger.fail(String(err));
 }
